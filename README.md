@@ -1,0 +1,2 @@
+# Aprendendo Websockets com Socket.io e MongoDB
+> Este projeto constrói um editor de documentos assíncrono ("Alura Docs") através do protocolo WebSocket, implementado com **Node.js**, **Socket.io** e **MongoDB**.
