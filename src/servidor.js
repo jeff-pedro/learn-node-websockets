@@ -15,12 +15,10 @@ app.use(express.static(diretorioPublico));
 
 const servidorHttp = http.createServer(app);
 
-const io = new Server(servidorHttp);
-
 servidorHttp.listen(porta, () => {
     console.log(`Servidor escutando na porta ${porta}`)
 });
 
-io.on('connection', () => {
-    console.log('Um cliente se conectou!');
-});
+const io = new Server(servidorHttp);
+
+export default io;
