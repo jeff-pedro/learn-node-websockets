@@ -7,5 +7,6 @@ textoEditor.addEventListener('keyup', () => {
 
     socket.on('texto-editor-clientes', (texto) => {
         console.log(texto);
+        textoEditor.value = texto;
     });
 });
