@@ -11,4 +11,9 @@ socket.on('texto-editor-clientes', (texto) => {
     atualizaTextoEditor(texto);
 });
 
+socket.on('disconnect', (motivo) => {
+    console.log(`Servidor desconectado!
+    Motivo ${motivo}`);
+});
+
 export { emitirTextoEditor };

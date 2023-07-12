@@ -5,5 +5,10 @@ io.on('connection', (socket) => {
 
     socket.on('texto-editor', (texto) => {
         socket.broadcast.emit('texto-editor-clientes', texto);
-    }); 
+    });
+    
+    socket.on('disconnect', (motivo) => {
+        console.log(`Cliente ${socket.id} desconectado! 
+        Motivo: ${motivo}`);
+    });
 });
