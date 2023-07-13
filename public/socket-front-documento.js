@@ -6,14 +6,18 @@ function emitirTextoEditor(texto) {
     socket.emit('texto-editor', texto);
 }
 
-socket.on('texto-editor-clientes', (texto) => {
+socket.on('texto_editor_clientes', (texto) => {
     console.log(texto);
     atualizaTextoEditor(texto);
 });
 
-socket.on('disconnect', (motivo) => {
-    console.log(`Servidor desconectado!
-    Motivo ${motivo}`);
-});
+function selecionarDocumento(nome) {
+    socket.emit('selecionar_documento', nome);
+}
 
-export { emitirTextoEditor };
+// socket.on('disconnect', (motivo) => {
+//     console.log(`Servidor desconectado!
+//     Motivo ${motivo}`);
+// });
+
+export { emitirTextoEditor, selecionarDocumento };
