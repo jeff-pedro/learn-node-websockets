@@ -7,13 +7,7 @@ io.on('connection', (socket) => {
         socket.join(nomeDocumento);
     });
 
-    socket.on('texto-editor', (texto) => {
-        // socket.broadcast.emit('texto-editor-clientes', texto);
-        socket.to('JavaScript').emit('texto-editor-clientes', texto);
+    socket.on('texto-editor', ({ texto, nomeDocumento }) => {
+        socket.to(nomeDocumento).emit('texto-editor-clientes', texto);
     });
-    
-    // socket.on('disconnect', (motivo) => {
-    //     console.log(`Cliente ${socket.id} desconectado! 
-    //     Motivo: ${motivo}`);
-    // });
 });
