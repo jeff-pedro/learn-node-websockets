@@ -34,9 +34,8 @@ io.on('connection', (socket) => {
 
         if(documento) {
             documento.texto = texto;
+            socket.to(nomeDocumento).emit('texto-editor-clientes', texto);
         }
-
-        socket.to(nomeDocumento).emit('texto-editor-clientes', texto);
     });
 });
 
