@@ -18,14 +18,14 @@ const documentos = [
 io.on('connection', (socket) => {
     // console.log('Um cliente se conectou! ID:', socket.id);
 
-    socket.on('selecionar_documento', (nomeDocumento) => {
+    socket.on('selecionar_documento', (nomeDocumento, devolverTexto) => {
         socket.join(nomeDocumento);
-        
+
         // db local
         const documento = encontrarDocumento(nomeDocumento);
-        
+
         if (documento) {
-            socket.emit('texto_documento', documento.texto);
+            devolverTexto(documento.texto);
         }
     });
 
