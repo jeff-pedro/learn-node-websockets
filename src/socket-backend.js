@@ -30,6 +30,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('texto-editor', ({ texto, nomeDocumento }) => {
+        const documento = encontrarDocumento(nomeDocumento);
+
+        if(documento) {
+            documento.texto = texto;
+        }
+
         socket.to(nomeDocumento).emit('texto-editor-clientes', texto);
     });
 });
