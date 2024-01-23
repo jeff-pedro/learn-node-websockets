@@ -9,10 +9,10 @@ function selecionarDocumento(nome) {
 }
 
 function emitirTextoEditor(dados) {
-    socket.emit('texto-editor', dados);
+    socket.emit('texto_editor', dados);
 }
 
-socket.on('texto-editor-clientes', (texto) => {
+socket.on('texto_editor_clientes', (texto) => {
     atualizaTextoEditor(texto);
 });
 
