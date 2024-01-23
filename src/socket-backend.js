@@ -3,15 +3,15 @@ import io from "./servidor.js";
 const documentos = [
     {
         nome: "JavaScript",
-        texto: "Texto de JavaScript..."
+        texto: "Texto de javascript..."
     },
     {
         nome: "Node",
-        texto: "Texto de Node..."
+        texto: "Texto de node..."
     },
     {
         nome: "Socket.io",
-        texto: "Texto de Socket.io..."
+        texto: "Texto de socket.io..."
     }
 ]
 
@@ -29,12 +29,12 @@ io.on('connection', (socket) => {
         }
     });
 
-    socket.on('texto-editor', ({ texto, nomeDocumento }) => {
+    socket.on('texto_editor', ({ texto, nomeDocumento }) => {
         const documento = encontrarDocumento(nomeDocumento);
 
         if(documento) {
             documento.texto = texto;
-            socket.to(nomeDocumento).emit('texto-editor-clientes', texto);
+            socket.to(nomeDocumento).emit('texto_editor_clientes', texto);
         }
     });
 });
