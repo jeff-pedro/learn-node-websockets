@@ -11,7 +11,6 @@ function emitirTextoEditor(dados) {
 }
 
 socket.on('texto-editor-clientes', (texto) => {
-    console.log(texto);
     atualizaTextoEditor(texto);
 });
 
