@@ -19,11 +19,14 @@ io.on('connection', (socket) => {
     // console.log('Um cliente se conectou! ID:', socket.id);
 
     socket.on('selecionar_documento', (nomeDocumento) => {
+        socket.join(nomeDocumento);
+        
+        // db local
         const documento = encontrarDocumento(nomeDocumento);
         
-        console.log(documento);
-
-        socket.join(nomeDocumento);        
+        if (documento) {
+            socket.emit('texto_documento', documento.texto);
+        }
     });
 
     socket.on('texto-editor', ({ texto, nomeDocumento }) => {
