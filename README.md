@@ -18,5 +18,6 @@
 * [Eventos de Broadcast](https://socket.io/docs/v3/broadcasting-events/) para emitir eventos a partir do servidor para todos clientes, exceto o cliente que está emitindo o evento.
 * Como organizar arquivos por __responsabilidade__(manipulação de HTML, funções do socket...)
 * Trabalhar com [Salas](https://socket.io/docs/v3/rooms/) com o objetivo de agrupar sockets e direcionar os eventos para um grupo selecionado.
-* Usar o recurso "[Reconhecimento]()", quando um cliente envia um evento para o servidor e espera receber um dado de volta.
+* Usar o recurso "[Reconhecimento](https://socket.io/docs/v4/emitting-events/#acknowledgements)", quando um cliente envia um evento para o servidor e espera receber um dado de volta.
+* [Persistência de dados com MongoDB](https://www.mongodb.com/docs/drivers/node/current/), para obter e alterar os dados salvos.
 

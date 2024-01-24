@@ -6,14 +6,14 @@ const cliente = new MongoClient(uri);
 let documentosColecao;
 
 try {
-    await cliente.connect();
+  await cliente.connect();
 
-    const db = cliente.db('alura-websocket');
-    documentosColecao = db.collection('documentos');
+  const db = cliente.db('alura-websocket');
+  documentosColecao = db.collection('documentos');
 
-    console.log('Conectado ao bando de dados com sucesso!');
-} catch (erro){
-    console.log(erro);
+  console.log('Conectado ao bando de dados com sucesso!');
+} catch (erro) {
+  console.log(erro);
 }
 
 export { documentosColecao };
