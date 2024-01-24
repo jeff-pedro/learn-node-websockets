@@ -1,5 +1,5 @@
 import io from "./servidor.js";
-import documentos from "./db.js";
+import { documentosColecao } from "./dbConnect.js";
 
 // const documentos = [
 //     {
@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
         // const documento = encontrarDocumento(nomeDocumento);
 
         // db dinamico
-        const documento = await documentos.findOne({ nome: nomeDocumento });
+        const documento = await documentosColecao.findOne({ nome: nomeDocumento });
 
         if (documento) {
             devolverTexto(documento.texto);
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
 
     socket.on('texto_editor', async ({ texto, nomeDocumento }) => {
         // const documento = encontrarDocumento(nomeDocumento);
-        const documento = await documentos.findOne({ nome: nomeDocumento });
+        const documento = await documentosColecao.findOne({ nome: nomeDocumento });
 
         if (documento) {
             // documento.texto = texto;
@@ -43,7 +43,7 @@ io.on('connection', (socket) => {
             // guarda texto no bando de dados
             const query = { nome: nomeDocumento };
             const update = { $set: { texto: texto } };
-            await documentos.updateOne(query, update);
+            await documentosColecao.updateOne(query, update);
 
             socket.to(nomeDocumento).emit('texto_editor_clientes', texto);
         }
