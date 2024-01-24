@@ -12,8 +12,8 @@ selecionarDocumento(nomeDocumento);
 
 textoEditor.addEventListener('keyup', () => {
     emitirTextoEditor({
-        texto: textoEditor.value,
-        nomeDocumento 
+        nomeDocumento,
+        texto: textoEditor.value
     });
 });
 
