@@ -1,18 +1,15 @@
 const socket = io();
 
-import { criarListaDocumentos } from "./index.js";
+import { inserirLinkDocumento } from "./index.js";
 
-function carregarListaDocumentos() {
-  socket.emit('listar_documentos');
-};
+socket.emit('obter_documentos', (documentos) => {
+  documentos.forEach(documento => {
+    inserirLinkDocumento(documento.nome);
+  });
+});
 
 function adicionarDocumentoNaLista(documento) {
   socket.emit('adicionar_documento', documento);
 }
 
-socket.on('listar_documentos_cliente', (documentos) => {
-  criarListaDocumentos(documentos);
-});
-
-
-export { carregarListaDocumentos, adicionarDocumentoNaLista };
+export { adicionarDocumentoNaLista };

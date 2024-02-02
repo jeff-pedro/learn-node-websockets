@@ -1,14 +1,12 @@
 import io from "./servidor.js";
-import { encontrarDocumento, atualizaDocumento, encontrarTodosDocumentos, adicionarDocumento } from "./documentosDb.js";
+import { encontrarDocumento, atualizaDocumento, obterDocumentos, adicionarDocumento } from "./documentosDb.js";
 
 io.on('connection', (socket) => {
-  // console.log('Um cliente se conectou! ID:', socket.id);
-
-  socket.on('listar_documentos', async () => {
-    const documentos = await encontrarTodosDocumentos();
+  socket.on('obter_documentos', async (devolverDocumentos) => {
+    const documentos = await obterDocumentos();
 
     if (documentos) {
-      socket.emit('listar_documentos_cliente', documentos);
+      devolverDocumentos(documentos); // Conceito de Reconhecimento (Acknowledment)
     }
   });
 

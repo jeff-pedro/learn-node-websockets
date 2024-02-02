@@ -6,15 +6,8 @@ function encontrarDocumento(nome) {
   return documento;
 }
 
-async function encontrarTodosDocumentos() {
-  const documentosCursor = await documentosColecao.find({}, { sort: { nome: 1 }, projection: { _id: 0, nome: 1 } });
-
-  let documentos = [];
-
-  for await (const doc of documentosCursor) {
-    documentos.push(doc);
-  }
-
+function obterDocumentos() {
+  const documentos = documentosColecao.find().toArray();
   return documentos;
 }
 
@@ -28,4 +21,4 @@ function atualizaDocumento(nome, texto) {
   return atualizacao;
 }
 
-export { encontrarDocumento, encontrarTodosDocumentos, atualizaDocumento, adicionarDocumento };
+export { encontrarDocumento, obterDocumentos, atualizaDocumento, adicionarDocumento };
