@@ -30,11 +30,11 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('excluir_documento', async (nomeDocumento, devolveResultado) => {
+  socket.on('excluir_documento', async (nomeDocumento) => {
     const resultado = await excluirDocumento(nomeDocumento);
 
     if (resultado.deletedCount) {
-      devolveResultado(`O documento "${nomeDocumento}' foi excluído!`)
+      io.emit('excluir_documento_sucesso', nomeDocumento);
     }
   });
 
