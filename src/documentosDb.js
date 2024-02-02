@@ -12,7 +12,12 @@ function obterDocumentos() {
 }
 
 async function adicionarDocumento(nome) {
-  await documentosColecao.insertOne({ nome });
+  const resultado = await documentosColecao.insertOne({
+    nome,
+    texto: ""
+  });
+  
+  return resultado;
 }
 
 function atualizaDocumento(nome, texto) {

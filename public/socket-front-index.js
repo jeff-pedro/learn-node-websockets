@@ -8,8 +8,12 @@ socket.emit('obter_documentos', (documentos) => {
   });
 });
 
-function adicionarDocumentoNaLista(documento) {
-  socket.emit('adicionar_documento', documento);
+function emitirAdicionarDocumento(nome) {
+  socket.emit('adicionar_documento', nome);
 }
 
-export { adicionarDocumentoNaLista };
+socket.on('adicionar_documento_interface', (nome) => {
+  inserirLinkDocumento(nome);
+});
+
+export { emitirAdicionarDocumento };

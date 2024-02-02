@@ -10,8 +10,12 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('adicionar_documento', (nomeDocumento) => {
-    adicionarDocumento(nomeDocumento);
+  socket.on('adicionar_documento', async (nome) => {
+    const resultado = await adicionarDocumento(nome);
+
+    if (resultado.acknowledged) {
+      io.emit('adicionar_documento_interface', nome);
+    }
   });
 
   socket.on('selecionar_documento', async (nomeDocumento, devolverTexto) => {
