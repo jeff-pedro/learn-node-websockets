@@ -16,7 +16,12 @@ async function adicionarDocumento(nome) {
     nome,
     texto: ""
   });
-  
+
+  return resultado;
+}
+
+function excluirDocumento(nome) {
+  const resultado = documentosColecao.deleteOne({ nome });
   return resultado;
 }
 
@@ -26,4 +31,10 @@ function atualizaDocumento(nome, texto) {
   return atualizacao;
 }
 
-export { encontrarDocumento, obterDocumentos, atualizaDocumento, adicionarDocumento };
+export {
+  encontrarDocumento,
+  obterDocumentos,
+  atualizaDocumento,
+  adicionarDocumento,
+  excluirDocumento
+};

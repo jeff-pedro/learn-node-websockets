@@ -1,5 +1,11 @@
 import io from "./servidor.js";
-import { encontrarDocumento, atualizaDocumento, obterDocumentos, adicionarDocumento } from "./documentosDb.js";
+import {
+  encontrarDocumento,
+  atualizaDocumento,
+  obterDocumentos,
+  adicionarDocumento,
+  excluirDocumento
+} from "./documentosDb.js";
 
 io.on('connection', (socket) => {
   socket.on('obter_documentos', async (devolverDocumentos) => {
@@ -10,17 +16,25 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('adicionar_documento', async (nome) => {
-    const documentoExiste = (await encontrarDocumento(nome)) !== null;
+  socket.on('adicionar_documento', async (nomeDocumento) => {
+    const documentoExiste = (await encontrarDocumento(nomeDocumento)) !== null;
 
     if (documentoExiste) {
-      socket.emit('documento_existente', nome);
+      socket.emit('documento_existente', nomeDocumento);
     } else {
-      const resultado = await adicionarDocumento(nome);
+      const resultado = await adicionarDocumento(nomeDocumento);
 
       if (resultado.acknowledged) {
-        io.emit('adicionar_documento_interface', nome);
+        io.emit('adicionar_documento_interface', nomeDocumento);
       }
+    }
+  });
+
+  socket.on('excluir_documento', async (nomeDocumento, devolveResultado) => {
+    const resultado = await excluirDocumento(nomeDocumento);
+
+    if (resultado.deletedCount) {
+      devolveResultado(`O documento "${nomeDocumento}' foi excluído!`)
     }
   });
 
