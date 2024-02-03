@@ -18,8 +18,7 @@
   "keywords": [
     "websockets",
     "express",
-    "mongodb",
-    "mongoose"
+    "mongodb"
   ],
   "author": "Jefferson Santos",
   "license": "ISC",
