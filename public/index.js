@@ -14,7 +14,7 @@ function inserirLinkDocumento(nomeDocumento) {
   listaDocumentos.innerHTML += `
     <a 
       id="documento-${nomeDocumento}"
-      href="documento.html?nome=${nomeDocumento}"
+      href="documento/documento.html?nome=${nomeDocumento}"
       class=list-group-item list-group-item-action
     >
       ${nomeDocumento}
