@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/socket-backend.js"
+    "dev": "nodemon servidor/socket-backend.js"
   },
   "repository": {
     "url": "git+https://github.com/jeff-pedro/learn-node-websockets.git"
