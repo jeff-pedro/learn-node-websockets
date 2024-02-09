@@ -1,9 +1,9 @@
 import autenticaUsuario from "../utils/autenticaUsuario.js";
 
 function registrarEventosLogin(socket, io) {
-  socket.on('login', async (dados) => {
-    const autenticado = await autenticaUsuario(dados.usuario, dados.senha)
-  
+  socket.on('autenticar_usuario', async ({ nome, senha }) => {
+    const autenticado = await autenticaUsuario(nome, senha)
+
     console.log(autenticado);
   });
 }

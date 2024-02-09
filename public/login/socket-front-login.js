@@ -1,7 +1,7 @@
 const socket = io();
 
-function emitirLogin(dados) {
-  socket.emit('login', dados);
+function emitirAutenticarUsuario(dados) {
+  socket.emit('autenticar_usuario', dados);
 }
 
-export { emitirLogin };
+export { emitirAutenticarUsuario };
