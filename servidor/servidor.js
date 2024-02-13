@@ -26,6 +26,10 @@ servidorHttp.listen(porta, () => {
     console.log(`Servidor escutando na porta ${porta}`)
 });
 
-const io = new Server(servidorHttp);
+const io = new Server(servidorHttp, {
+    cors: {
+        origin: "http://localhost:5000",
+    },
+});
 
 export default io;
