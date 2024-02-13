@@ -16,6 +16,11 @@ const diretorioPublico = path.join(caminhoAtual, '../..', 'public');
 app.use(express.static(diretorioPublico));
 
 const servidorHttp = http.createServer(app);
+const servidorHttp2 = http.createServer(app);
+
+servidorHttp2.listen(5000, () => {
+    console.log('Servidor escutando na porta 5000');
+});
 
 servidorHttp.listen(porta, () => {
     console.log(`Servidor escutando na porta ${porta}`)
