@@ -1,7 +1,5 @@
 import { emitirAdicionarDocumento } from "./socket-front-index.js";
-import { obterCookie, removerCookie } from "./utils/cookies.js";
-
-const tokenJwt = obterCookie("tokenJwt");
+import { removerCookie } from "./utils/cookies.js";
 
 const listaDocumentos = document.getElementById('lista-documentos');
 const form = document.getElementById('form-adiciona-documento');
