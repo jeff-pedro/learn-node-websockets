@@ -1,6 +1,11 @@
+import { inserirLinkDocumento, removerLinkDocumento } from "./index.js";
+
 const socket = io();
 
-import { inserirLinkDocumento, removerLinkDocumento } from "./index.js";
+socket.on('connect_error', (erro) => {
+  alert(erro);
+  window.location.href = '/login/index.html';
+});
 
 socket.emit('obter_documentos', (documentos) => {
   documentos.forEach(documento => {

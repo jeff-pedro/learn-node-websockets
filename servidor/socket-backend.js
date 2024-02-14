@@ -8,7 +8,7 @@ import registrarEventosLogin from "./registrarEventos/login.js";
 import io from "./servidor.js";
 
 io.use((socket, next) => {
-  next();
+  next(new Error('Usuário não logado.'));
 });
 
 io.on('connection', (socket) => {
