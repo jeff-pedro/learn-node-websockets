@@ -10,9 +10,9 @@ import autorizarUsuario from './middlewares/autorizarUsuarios.js';
 
 const nspUsuarios = io.of('/usuarios'); 
 
-io.of('/usuarios').use(autorizarUsuario);
+nspUsuarios.use(autorizarUsuario);
 
-io.of('/usuarios').on('connection', (socket) => {
+nspUsuarios.on('connection', (socket) => {
   registrarEventosInicio(socket, nspUsuarios);
   registrarEventosDocumento(socket, nspUsuarios);
 });
