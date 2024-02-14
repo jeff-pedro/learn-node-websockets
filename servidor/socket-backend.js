@@ -7,6 +7,10 @@ import registrarEventosLogin from "./registrarEventos/login.js";
 
 import io from "./servidor.js";
 
+io.use((socket, next) => {
+  next();
+});
+
 io.on('connection', (socket) => {
   registrarEventosInicio(socket, io);
   registrarEventosDocumento(socket, io);
