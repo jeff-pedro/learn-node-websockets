@@ -2,7 +2,8 @@
 > Este projeto constrói um editor de documentos com edição em tempo real ("Alura Docs") através do protocolo WebSockets, implementado com **Node.js**, **Socket.io** e **MongoDB**.
 
 ## Recursos
-* [Socket.io Official Docs](https://socket.io/)
+- [Socket.io Official Docs](https://socket.io/)
+- [Jsonwebtoken module](https://github.com/auth0/node-jsonwebtoken)
 
 ## Funcionalidades
 * Atualização em tempo real to texto do documento compartilhado entre os clientes.
