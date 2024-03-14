@@ -22,7 +22,10 @@ function registrarEventosDocumento(socket, io) {
         if (!conexaoEncontrada) {
           socket.join(nomeDocumento);
           
-          adicionarConexao({ nomeDocumento, nomeUsuario });
+          // adicionarConexao({ nomeDocumento, nomeUsuario });
+          
+          /* Alternativa usando id do socket */
+          adicionarConexao({ nomeDocumento, nomeUsuario, id: socket.id });
           
           socket.data = {
             usuarioEntrou: true
@@ -56,7 +59,10 @@ function registrarEventosDocumento(socket, io) {
 
       socket.on('disconnect', () => {
         if (socket.data.usuarioEntrou) {
-          removerConexao(nomeDocumento, nomeUsuario);
+          // removerConexao(nomeDocumento, nomeUsuario);
+
+          /* Alternativa usando o id do socket */
+          removerConexao(socket.id);
 
           const usuariosNoDocumento = obterUsuariosDocumentos(nomeDocumento);
 
