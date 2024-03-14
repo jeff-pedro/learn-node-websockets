@@ -4,7 +4,9 @@ import {
   excluirDocumento,
 } from "../db/documentosDb.js";
 import {
-  adicionarConexao, obterUsuariosDocumentos, removerConexao
+  adicionarConexao,
+  obterUsuariosDocumentos,
+  removerConexao
 } from "../utils/conexoesDocumentos.js";
 
 function registrarEventosDocumento(socket, io) {
@@ -42,7 +44,11 @@ function registrarEventosDocumento(socket, io) {
       });
 
       socket.on('disconnect', () => {
-        removerConexao({ nomeDocumento, nomeUsuario });
+        removerConexao(nomeDocumento, nomeUsuario);
+
+        const usuariosNoDocumento = obterUsuariosDocumentos(nomeDocumento);
+
+        io.to(nomeDocumento).emit('usuarios_no_documento', usuariosNoDocumento);
       });
     });
 }
