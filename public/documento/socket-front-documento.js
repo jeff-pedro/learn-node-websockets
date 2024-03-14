@@ -12,9 +12,7 @@ const socket = io('/usuarios', {
   },
 });
 
-socket.on("autorizacao_sucesso", (payloadToken) => {
-  tratarAutorizacaoSucesso(payloadToken);
-});
+socket.on("autorizacao_sucesso", tratarAutorizacaoSucesso);
 
 socket.on('connect_error', (erro) => {
   alert(erro);
@@ -22,30 +20,22 @@ socket.on('connect_error', (erro) => {
 });
 
 function selecionarDocumento(dadosEntrada) {
-  socket.emit('selecionar_documento', dadosEntrada, (texto) => {
-    atualizaTextoEditor(texto);
-  });
+  socket.emit('selecionar_documento', dadosEntrada, atualizaTextoEditor);
 }
 
-socket.on('usuarios_no_documento', (usuariosNoDocumento) => {
-  atualizarInterfaceUsuarios(usuariosNoDocumento);
-});
+socket.on('usuarios_no_documento', atualizarInterfaceUsuarios);
 
 function emitirTextoEditor(dados) {
   socket.emit('texto_editor', dados);
 }
 
-socket.on('texto_editor_clientes', (texto) => {
-  atualizaTextoEditor(texto);
-});
+socket.on('texto_editor_clientes', atualizaTextoEditor);
 
 function emitirExcluirDocumento(nome) {
   socket.emit('excluir_documento', nome);
 }
 
-socket.on('excluir_documento_sucesso', (nome) => {
-  alertarERedirecionar(nome);
-});
+socket.on('excluir_documento_sucesso', alertarERedirecionar);
 
 export {
   emitirTextoEditor,
