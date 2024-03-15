@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/socket-backend.js"
+    "dev": "nodemon servidor/socket-backend.js"
   },
   "repository": {
     "url": "git+https://github.com/jeff-pedro/learn-node-websockets.git"
@@ -18,13 +18,13 @@
   "keywords": [
     "websockets",
     "express",
-    "mongodb",
-    "mongoose"
+    "mongodb"
   ],
   "author": "Jefferson Santos",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.3.0",
     "socket.io": "^4.6.2"
   },
