@@ -3,7 +3,8 @@
 
 ## Recursos
 - [Socket.io Official Docs](https://socket.io/)
-- [Jsonwebtoken module](https://github.com/auth0/node-jsonwebtoken)
+- [MongoDB Official Docs](https://www.mongodb.com/docs)
+- [jsonwebtoken module](https://github.com/auth0/node-jsonwebtoken)
 
 ## Funcionalidades
 * Atualização em tempo real to texto do documento compartilhado entre os clientes.
@@ -27,14 +28,21 @@
 
 ## Autenticação da aplicação
 ### Explorado
-- Estruturar o código e arquivos da aplicação (https://socket.io/docs/v4/server-application-structure/)
-- Realizar cadastro e autenticação de usuários com Socket.IO
-    - criptografar senhas utilizando o módulo [crypto](https://nodejs.org/api/crypto.html)
-- Fluxo de login, armazenamento de token [JWT](https://jwt.io/) e autorização
+- [Estruturar o código e arquivos](https://socket.io/docs/v4/server-application-structure/) da aplicação.
+- Realizar cadastro e autenticação de usuários com [Socket.IO](https://socket.io/):
+    - criptografar senhas utilizando o módulo [crypto](https://nodejs.org/api/crypto.html).
+- Fluxo de login, armazenamento de token [JWT](https://jwt.io/) e autorização:
     - autenticar um usuário ao verificar se a senha digita juntamente com o sal armazenado corresponde ao mesmo hash salvo no banco de dados.
-    - gerar um token **JWT** quando o usuário é autenticado com sucesso
-    - armazenar o token **JWT** nos cookies do navegador
-    - manipular os cookies para adicionar, obter e deletar os tokens
-- Controlar acessos do cliente ao servidor através de [Middlewares](https://socket.io/docs/v4/middlewares/) ****do socket.io
-    - registrar middlewares para autenticar usuários antes de abrir conexões com o servidor
-- [Namespaces](https://socket.io/docs/v4/namespaces/) para agrupar conexões e direcionar quais páginas devem ser autenticadas
+    - gerar um token **JWT** quando o usuário é autenticado com sucesso.
+    - armazenar o token **JWT** nos cookies do navegador.
+    - manipular os cookies para adicionar, obter e deletar os tokens.
+- Controlar acessos do cliente ao servidor através de [Middlewares](https://socket.io/docs/v4/middlewares/) do socket.io:
+    - registrar middlewares para autenticar usuários antes de abrir conexões com o servidor.
+- [Namespaces](https://socket.io/docs/v4/namespaces/) para agrupar conexões e direcionar quais páginas devem ser autenticadas.
+- Retornar o **payload** do token para o cliente:
+    - [`jwt.verify`](https://github.com/auth0/node-jsonwebtoken?tab=readme-ov-file#jwtverifytoken-secretorpublickey-options-callback)  além de validar o token também retorna o **payload** com os dados passados na criação do token.
+- Registrar conexões dos documentos no servidor:
+    - através de uma lista local (array).
+- Lidar com a saída de um cliente de uma sala do socket.io:
+    - usando o evento `disconnect` em conjunto com a lista de conexões local.
+- Guardar informações em `socket.data`.
